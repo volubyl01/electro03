@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+   "baseUrl": ".", // Base URL pour résoudre les chemins relatifs
+    "paths": {
+      "@/*": ["assets/react/*"] // '@' pointe vers le répertoire où se trouvent les components react
+    }
+  },
+  // "include": ["assets/react/**/*"],
+  // "exclude": ["node_modules"],
+}

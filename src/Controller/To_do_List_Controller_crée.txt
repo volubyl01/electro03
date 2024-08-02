@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\TodoList;
+use App\Repository\TodoListRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class TodoListController extends AbstractController
+{
+    #[Route('/todo', name: 'todo_index')]
+    public function index(): Response
+    {
+        return $this->render('todo/index.html.twig');
+    }
+
+    #[Route('/api/todos', name: 'get_todos', methods: ['GET'])]
+    public function getTodos(TodoListRepository $repository): JsonResponse
+    {
+        $todos = $repository->findAll();
+        return $this->json($todos);
+    }
+
+    #[Route('/api/todos', name: 'create_todo', methods: ['POST'])]
+    public function createTodo(Request $request, EntityManagerInterface $entityManager): JsonResponse
+    {
+        $data = json_decode($request->getContent(), true);
+        
+        $todo = new TodoList();
+        $todo->setTitle($data['title']);
+        $todo->setCompleted($data['completed'] ?? false);
+
+        $entityManager->persist($todo);
+        $entityManager->flush();
+
+        return $this->json($todo, Response::HTTP_CREATED);
+    }
+}
