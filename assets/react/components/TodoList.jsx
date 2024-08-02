@@ -3,6 +3,8 @@ import axios from 'axios';
 import TodoItem from './TodoItem';
 import TodoForm from './TodoForm';
 import '../../styles/todo.css';
+import MycomboBox from './MycomboBox';
+
 
 
 const TodoList = () => {
@@ -45,21 +47,28 @@ const TodoList = () => {
     };
 
     return (
-        <div class="todo-container">
-            <h1>Todo List</h1>
-            <TodoForm onSubmit={handleFormSubmit} todo={editingTodo} />
-            <ul className="todo-list">
-                {todos.map(todo => (
-                    <TodoItem
-                        key={todo.id}
-                        todo={todo}
-                        onEdit={handleEdit}
-                        onDelete={handleDelete}
-                    />
-                ))}
-            </ul>
+        <div className="main-container">
+            <div className="todo-container">
+                <h1>Todo List</h1>
+                
+                <TodoForm onSubmit={handleFormSubmit} todo={editingTodo} />
+                <ul className="todo-list">
+                    {todos.map(todo => (
+                        <TodoItem
+                            key={todo.id}
+                            todo={todo}
+                            onEdit={handleEdit}
+                            onDelete={handleDelete}
+                        />
+                    ))}
+                </ul>
+            </div>
+            <div className="combobox-container">
+                <MycomboBox />
+            </div>
         </div>
-    );
+    )
+    
 };
 
 export default TodoList;

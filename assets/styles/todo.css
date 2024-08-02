@@ -44,4 +44,12 @@
     word-wrap: break-word;
     max-width: 80%;
   }
-  
+  .combobox-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: black;
+    color: rgb(219, 10, 10);
+  }

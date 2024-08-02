@@ -1,10 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Todo List{% endblock %}
+{% block title %}Todo List
+{% endblock %}
 
 {% block body %}
-{# on utilise stimulus #}
-    <div data-controller="todo-list"></div> 
+	{# on utilise stimulus #}
+	<div data-controller="todo-list">
+    {# on utilise les attributs data pour stimulus #}
+		<div data-todo-list-target="todolist"></div>
+		<div data-todo-list-target="mycombobox"></div>
+	</div>
 
-     <p>This is a static content</p>
+	<p>This is a static content</p>
 {% endblock %}

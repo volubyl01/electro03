@@ -1,17 +1,23 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "target": "es5",
     "module": "esnext",
     "strict": true,
-    "jsx": "react",
+    "jsx": "react-jsx",  // Changé de "react" à "react-jsx" pour une meilleure compatibilité
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-   "baseUrl": ".", // Base URL pour résoudre les chemins relatifs
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["assets/react/*"] // '@' pointe vers le répertoire où se trouvent les components react
-    }
+      "@/*": ["assets/react/*"]
+    },
+    "allowJs": true,  // Permet l'utilisation de fichiers JavaScript
+    "resolveJsonModule": true,  // Permet l'import de fichiers JSON
+    "isolatedModules": true,  // Assure que chaque fichier peut être transpilé de manière isolée
+    "noEmit": true,  // Ne génère pas de fichiers de sortie (utile si vous utilisez Babel pour la transpilation)
+    "lib": ["dom", "dom.iterable", "esnext"]  // Spécifie les bibliothèques à inclure
   },
-  // "include": ["assets/react/**/*"],
-  // "exclude": ["node_modules"],
+  "include": ["assets/react/**/*"],
+  "exclude": ["node_modules"]  // Exclut explicitement node_modules
 }
