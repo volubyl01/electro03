@@ -15,13 +15,7 @@
                 "enabled": false,
                 "fetch": "eager"
             }
-        },
-        "todo-list": {
-            "name": "todo_list",
-            "module": "./controllers/todo_list_controller.js",
-            "export": "default"
-          }
+        }
     },
-    
     "entrypoints": []
 }

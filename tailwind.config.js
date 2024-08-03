@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: ["./src/**/*.{html,js,jsx}", "./public/*.html"],
-  
+  content: [
+    "./assets/**/*.{html,js,jsx}", // Inclure les fichiers JSX et JS dans le dossier assets
+    "./templates/**/*.html.twig", // Inclure les templates Twig
+    "./public/*.html",
+  ],
+
   prefix: "",
   theme: {
     container: {
@@ -70,4 +74,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

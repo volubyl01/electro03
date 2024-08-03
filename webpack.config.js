@@ -2,6 +2,7 @@ const Encore = require('@symfony/webpack-encore'); // Syntaxe Common JS
 const WebpackNotifierPlugin = require('webpack-notifier');
 //import Encore from '@symfony/webpack-encore';// Syntaxe ES
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
@@ -80,10 +81,15 @@ Encore
     // .autoProvidejQuery()
     .enablePostCssLoader()
 
-    .enableStimulusBridge('./assets/controllers.json')
+    .enableStimulusBridge(path.resolve(__dirname, 'assets/controllers.json'))
 ;
 
 module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'assets/react'),
@@ -95,6 +101,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
+          MiniCssExtractPlugin.loader,
           'style-loader',
           'css-loader',
           'postcss-loader',
@@ -102,5 +109,10 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'styles.css',
+    }),
+  ],
 };
 module.exports = Encore.getWebpackConfig();
